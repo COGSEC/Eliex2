@@ -1,2 +1,2 @@
 # Eliex2
-DocLib manager to bridge Paperpile and Obsidian
+DocLib manager to bridge Paperpile and Obsidian.
