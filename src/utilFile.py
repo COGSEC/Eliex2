@@ -53,17 +53,18 @@ def makeFullPath(folder,path):
 
 def getPathsFromFolder(folder, **kwargs):
     paths = []
-    full = False
-    if "full" in kwargs.keys():
-        if kwargs['full']:
-            full = True
-    for path in os.listdir(folder):
-        item = os.path.join(folder,path)
-        if checkForFile(item):
-            if full:
-                paths.append(item)
-            else:
-                paths.append(path)
+    pathType = 'name'
+    if "pathType" in kwargs.keys():
+        pathType = kwargs['pathType']
+    for filename in os.listdir(folder):
+        fullpath = os.path.join(folder,filename)
+        if checkForFile(fullpath):
+            if pathType == 'name':
+                paths.append(filename)
+            elif pathType == 'full':
+                paths.append(fullpath)
+            elif pathType == 'both':
+                paths.append([filename,fullpath])
     return paths
 
 
