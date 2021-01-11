@@ -51,6 +51,23 @@ def makeFullPath(folder,path):
         path = path[1:len(path)]
     return folder+path
 
+def getPathsFromFolder(folder, **kwargs):
+    paths = []
+    full = False
+    if "full" in kwargs.keys():
+        if kwargs['full']:
+            full = True
+    for path in os.listdir(folder):
+        item = os.path.join(folder,path)
+        if checkForFile(item):
+            if full:
+                paths.append(item)
+            else:
+                paths.append(path)
+    return paths
+
+
+
     
 """
 print(getFileName("C:/Users/xyz/Documents/Code/Eliex/src/Eliex/testfolder/hashLib/9dd4e461268c8034f5c8564e155c67a6"))
