@@ -34,6 +34,17 @@ def checkForFile(filepath):
 def getFileName(filepath):
     return ntpath.basename(filepath)
 
+def renameFile(filepath, newname):
+    name = getFileName(filepath)
+    folder = filepath[0:len(filepath)-len(name)]
+    editFilePath(filepath,makeFullPath(folder,newname))
+    
+def renameAndMove(filepath,newfolder,newname):
+    editFilePath(filepath,makeFullPath(newfolder,newname))
+    
+
+    
+
 # delFile deletes a file at path
 def delFile(filepath):
     os.remove(filepath)
@@ -47,7 +58,7 @@ def readFile(filepath):
 def makeFullPath(folder,path):
     if folder[len(folder)-1] != "/" and folder[len(folder)-1] != "\\":
         folder+="\\"
-    if path[0] == "\\":
+    if path[0] == "/" or path[0] == "\\":
         path = path[1:len(path)]
     return folder+path
 
@@ -67,7 +78,8 @@ def getPathsFromFolder(folder, **kwargs):
                 paths.append([filename,fullpath])
     return paths
 
-
+#%%
+renameAndMove("F:/Google Drive/COGSEC_Lib/Lib4/Import/fournie2004.pdf","F:\Google Drive\COGSEC_Lib\Lib4","fournie2004-.pdf")
 
     
 """
