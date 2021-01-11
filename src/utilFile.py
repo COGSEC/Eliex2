@@ -43,8 +43,6 @@ def renameAndMove(filepath,newfolder,newname):
     editFilePath(filepath,makeFullPath(newfolder,newname))
     
 
-    
-
 # delFile deletes a file at path
 def delFile(filepath):
     os.remove(filepath)
