@@ -45,9 +45,9 @@ def readFile(filepath):
 
 # makeFullPath returns a fullpath given a directory location and a filepath
 def makeFullPath(folder,path):
-    if folder[len(folder)-1] != "/":
-        folder+="/"
-    if path[0] == "/":
+    if folder[len(folder)-1] != "/" and folder[len(folder)-1] != "\\":
+        folder+="\\"
+    if path[0] == "\\":
         path = path[1:len(path)]
     return folder+path
 
