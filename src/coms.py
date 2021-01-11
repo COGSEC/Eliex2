@@ -11,7 +11,7 @@ def ASKforShortTitle(filename):
     fullBorder()
     print("Please input a short title for the following item:")
     print(filename)
-    smallBorder
+    smallBorder()
     return input("ShortTitle:")
 
 def NOTIFYforHashHandling(filename, Hash):
