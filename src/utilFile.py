@@ -78,8 +78,7 @@ def getPathsFromFolder(folder, **kwargs):
                 paths.append([filename,fullpath])
     return paths
 
-#%%
-renameAndMove("F:/Google Drive/COGSEC_Lib/Lib4/Import/fournie2004.pdf","F:\Google Drive\COGSEC_Lib\Lib4","fournie2004-.pdf")
+
 
     
 """
