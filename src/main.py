@@ -6,7 +6,7 @@ import librarian
 
 
 def main():
-    configMngr = config.ConfigManager('config.ini')
+    configMngr = config.ConfigManager('C:/Users/xyz/Documents/Code/Eliex2/src/config.ini')
     listeningPost = listener.Listener(configMngr)
     lib = librarian.Librarian(configMngr)
     while True:
@@ -17,12 +17,5 @@ def main():
             lib.NewFiList(listeningPost.GetFiList()) 
     
 
-    
-#%%
-main()
-#%%
-
-"""
 if __name__ == "__main__":
     main()
-"""
