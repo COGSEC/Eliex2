@@ -2,6 +2,8 @@
 
 from utilFile import getFileName
 from utilHash import getMD5
+from utilFile import moveToFolder
+from utilFile import renameAndMove
 from coms import ASKforShortTitle
 from coms import NOTIFYforHashHandling
 
@@ -29,3 +31,7 @@ class fileInfo:
         return self.filename
     def GetShortTitle(self):
         return self.shortTitle
+    def MoveToFolder(self,folder):
+        moveToFolder(self.path,folder)
+    def RenameAndMove(self, folder):
+        renameAndMove(self.path,folder,self.shortTitle)
