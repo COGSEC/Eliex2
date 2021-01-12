@@ -21,3 +21,13 @@ def NOTIFYforHashHandling(filename, Hash):
     print("Please update paperpile entry for this object with the hash below:\n")
     print(Hash)
 
+def NOTIFYlistening():
+    smallBorder()
+    print("Listening...")
+
+def NOTIFYduplicateFound(Hash,Name):
+    smallBorder()
+    print("duplicate found...")
+    print("HASH: "+Hash)
+    print("Name: "+Name)
+    smallBorder()
