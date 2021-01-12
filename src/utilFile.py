@@ -11,7 +11,15 @@ def getExt(filepath):
 
 # editFilePath edits the filepath of a file at a given filepath
 def editFilePath(filepath, newFilepath):
-    os.rename(filepath, newFilepath)
+    try:
+        os.rename(filepath, newFilepath)
+    except PermissionError:
+        print("Received PermissionError!")
+        cmd = input("Type close to close program, or hit enter to try again")
+        if cmd == "close":
+            os.exit(1)
+        else:
+            editFilePath(filepath, newFilepath)
 
 # makeFile takes a string and creates a file given a filepath
 def makeFile(filepath, string):
@@ -72,8 +80,17 @@ def getPathsFromFolder(folder, **kwargs):
     return paths
 
 def writeOverFile(path, txt):
-    with open(path, 'w') as f:
-        f.write(txt)
+    try:   
+        with open(path, 'w') as f:
+            f.write(txt)
+    except PermissionError:
+        print("Received PermissionError!")
+        cmd = input("Type close to close program, or hit enter to try again")
+        if cmd == "close":
+            os.exit(1)
+        else:
+            writeOverFile(path,txt)
+        
 """
 print(getFileName("C:/Users/xyz/Documents/Code/Eliex/src/Eliex/testfolder/hashLib/9dd4e461268c8034f5c8564e155c67a6"))
 """
