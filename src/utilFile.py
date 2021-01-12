@@ -9,17 +9,9 @@ def getExt(filepath):
     i = filepath.rindex(".")
     return filepath[i:len(filepath)]
 
-"""
-print(getExt("testfolder\test.txt"))
-"""
-
 # editFilePath edits the filepath of a file at a given filepath
 def editFilePath(filepath, newFilepath):
     os.rename(filepath, newFilepath)
-
-"""
-renameFile("otherTest.txt", "testfolder\otherTest.pdf")
-"""
 
 # makeFile takes a string and creates a file given a filepath
 def makeFile(filepath, string):
@@ -42,6 +34,9 @@ def renameFile(filepath, newname):
 def renameAndMove(filepath,newfolder,newname):
     editFilePath(filepath,makeFullPath(newfolder,newname))
     
+def moveToFolder(filepath, newfolder):
+    name = getFileName(filepath)
+    editFilePath(filepath,makeFullPath(newfolder,name))
 
 # delFile deletes a file at path
 def delFile(filepath):
@@ -75,8 +70,6 @@ def getPathsFromFolder(folder, **kwargs):
             elif pathType == 'both':
                 paths.append([filename,fullpath])
     return paths
-
-
 
     
 """
