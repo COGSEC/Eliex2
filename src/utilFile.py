@@ -71,7 +71,9 @@ def getPathsFromFolder(folder, **kwargs):
                 paths.append([filename,fullpath])
     return paths
 
-    
+def writeOverFile(path, txt):
+    with open(path, 'w') as f:
+        f.write(txt)
 """
 print(getFileName("C:/Users/xyz/Documents/Code/Eliex/src/Eliex/testfolder/hashLib/9dd4e461268c8034f5c8564e155c67a6"))
 """
