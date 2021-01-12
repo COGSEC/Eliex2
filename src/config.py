@@ -14,12 +14,13 @@ class ConfigManager(configparser.ConfigParser):
     # buildRouter builds a router dictionary based on the lib location
     def buildRouter(self):
         router = dict()
-        router['PaperPileCache'] = makeFullPath(self.Get("LibraryLocation"),"PaperPileCache.txt")
-        router['Import'] = makeFullPath(self.Get("LibraryLocation"),"Import")
-        router['HashLib'] = makeFullPath(self.Get("LibraryLocation"),"HashLib")
-        router['FailedImport'] = makeFullPath(self.Get("LibraryLocation"),"FailedImport")
-        router['Vault'] = makeFullPath(self.Get("LibraryLocation"),"Vault")
-        router['DocLib'] = makeFullPath(self.Get("LibraryLocation"),"Vault\\DocLib")
+        d =  self.Get("LibraryLocation")
+        router['PaperPileCache'] = makeFullPath(d,"PaperPileCache.txt")
+        router['Import'] = makeFullPath(d,"Import")
+        router['HashLib'] = makeFullPath(d,"HashLib")
+        router['FailedImport'] = makeFullPath(d,"FailedImport")
+        router['Vault'] = makeFullPath(d,"Vault")
+        router['DocLib'] = makeFullPath(d,"Vault\\DocLib")
         return router
     
     # readIn builds the configManager's dictionary
