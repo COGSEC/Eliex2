@@ -21,6 +21,7 @@ class ConfigManager(configparser.ConfigParser):
         router['FailedImport'] = makeFullPath(d,"FailedImport")
         router['Vault'] = makeFullPath(d,"Vault")
         router['DocLib'] = makeFullPath(d,"Vault\\DocLib")
+        router['Report'] = makeFullPath(d,"Report.csv")
         return router
     
     # readIn builds the configManager's dictionary
