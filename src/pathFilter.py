@@ -2,6 +2,7 @@
 
 import utilFile
 from utilMisc import csvStringToList
+from utilMisc import checkDict
 from coms import NOTIFYduplicateFound
 
 class Filter:
@@ -11,7 +12,7 @@ class Filter:
         self.ignoreList = csvStringToList(configMngr.Get('IgnoreList'))
         self.blackList = csvStringToList(configMngr.Get('BlackList'))
     def Scrub(self, fiList):
-        return self.checkDuplicates(self.checkBlack(self.checkIgnore(fiList)))
+        return self.checkLocalDuplicates(self.checkDuplicates(self.checkBlack(self.checkIgnore(fiList))))
     def checkIgnore(self,fiList):
         i = 0
         while i < len(fiList):
@@ -49,4 +50,17 @@ class Filter:
             if mark:
                 i+=1
         return fiList
-    
+    def checkLocalDuplicates(self,fiList):
+        register = dict()
+        i = 0
+        while i < len(fiList):
+            mark = True
+            if checkDict(register,fiList[i].GetHash()):
+                fiList[i].MoveToFolder(self.failLoc)
+                NOTIFYduplicateFound(fiList[i].GetHash(),fiList[i].GetFileName())
+                del fiList[i]
+                mark = False
+            if mark:
+                register[fiList[i].GetHash()] = ""
+                i+=1
+        return fiList

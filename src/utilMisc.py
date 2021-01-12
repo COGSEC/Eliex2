@@ -4,3 +4,7 @@
 def csvStringToList(String):
     return String.split(", ")
 
+def checkDict(register,key):
+    if key in register.keys():
+        return True
+    return False

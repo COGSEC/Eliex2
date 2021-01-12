@@ -3,6 +3,7 @@
 from utilFile import makeFile
 from utilFile import makeFullPath
 from utilFile import getFileName
+from utilFile import getExt
 from utilHash import getMD5
 from utilFile import moveToFolder
 from utilFile import renameAndMove
@@ -14,17 +15,27 @@ class fileInfo:
         # stage 1 items
         self.path = path
         self.filename = getFileName(path)
+        self.ext = getExt(path)
         self.hash = getMD5(path)
         # stage 2 items        
         self.bloc = ""
         # stage 3 items
         self.shortTitle = ""
+        self.author = ""
+        self.year = ""
+        self.title = ""
+    def SetTitleAuthorYear(self, title,author,year):
+        self.author = author
+        self.year = year
+        self.title = title
     def ASKforShortTitle(self):
-        self.shortTitle = ASKforShortTitle(self.filename)
+        self.shortTitle = ASKforShortTitle(self)
     def NOTIFYforHashHandling(self):
         NOTIFYforHashHandling(self.filename, self.hash)
     def SetBloc(self, bloc):
         self.bloc = bloc
+    def GetBloc(self):
+        return self.bloc
     def GetHash(self):
         return self.hash
     def GetPath(self):
@@ -36,7 +47,7 @@ class fileInfo:
     def MoveToFolder(self,folder):
         moveToFolder(self.path,folder)
     def RenameAndMove(self, folder):
-        renameAndMove(self.path,folder,self.shortTitle)
+        renameAndMove(self.path,folder,self.shortTitle+self.ext)
     def writeReportString(self):
         rs = ""
         rs += self.hash +", "
@@ -44,10 +55,10 @@ class fileInfo:
         return rs
     def makeHashFile(self,hashLib):
         makeFile(makeFullPath(hashLib,self.hash),"")
-    def makeMDFile(self,vault):
+    def makeMdFile(self,vault):
         makeFile(makeFullPath(vault,self.shortTitle+".md"),self.bloc)
     def Archive(self,vault,doclib,hashlib):
-        self.makeMDfile(vault)
+        self.makeMdFile(vault)
         self.makeHashFile(hashlib)
         self.RenameAndMove(doclib)
         

@@ -7,12 +7,13 @@ import utilFile
 import utilHash
 import fi
 import pathFilter
+import coms
 
 #ignoreList = ["desktop.ini", ".crdownload"]
 
 class Listener:
     def __init__(self,configMngr):
-        self.tick = configMngr.Get('ListenTick')
+        self.tick = int(configMngr.Get('ListenTick'))
         self.importLoc = configMngr.GetPath('Import')
         self.ppLoc = configMngr.GetPath('PaperPileCache')
         self.importHash = "" # last import folder hash
@@ -21,6 +22,7 @@ class Listener:
         self.fiList = []
         self.papeCache = ""
     def Listen(self):
+        coms.NOTIFYlistening()
         while True:
             if self.listenToPapeCache():
                 return "pape"
@@ -43,6 +45,7 @@ class Listener:
         cPapeHash = utilHash.createMD5(self.papeCache)
         if self.ppHash != cPapeHash:
             self.ppHash = cPapeHash
+            coms.NOTIFYpapecacheChange()
             return True
         return False
     def getPathsFromImport(self):
@@ -63,9 +66,14 @@ class Listener:
     def checkImportHash(self):
         cHash = self.getHashOfList(self.fiList)
         if cHash != self.importHash:
+            coms.NOTIFYimportListChange()
             self.importHash = cHash
             return True
         return False
+    def GetPapeCache(self):
+        return self.papeCache
+    def GetFiList(self):
+        return self.fiList
 
 """
 import config
