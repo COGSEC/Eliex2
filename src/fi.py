@@ -56,7 +56,7 @@ class fileInfo:
     def makeHashFile(self,hashLib):
         makeFile(makeFullPath(hashLib,self.hash),"")
     def makeMdFile(self,vault):
-        makeFile(makeFullPath(vault,self.shortTitle+".md"),self.bloc)
+        makeFile(makeFullPath(vault,self.shortTitle+".md"),self.bloc+"\n"+"![[docLib/"+self.shortTitle+self.ext+"]]")
     def Archive(self,vault,doclib,hashlib):
         self.makeMdFile(vault)
         self.makeHashFile(hashlib)

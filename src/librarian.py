@@ -39,11 +39,12 @@ class Librarian:
         for fiObj in ready:
             fiObj.ASKforShortTitle()
     def writeReport(self):
-        coms.NOTIFYWritingreport()
-        bloctext = ""
-        for fiObj in self.fiList:
-            bloctext += fiObj.writeReportString() +"\n"
-        utilFile.writeOverFile(self.reportLoc, bloctext)
+        if len(self.fiList) > 0:
+            coms.NOTIFYWritingreport()
+            bloctext = ""
+            for fiObj in self.fiList:
+                bloctext += fiObj.writeReportString() +"\n"
+            utilFile.writeOverFile(self.reportLoc, bloctext)
     def setBlocs(self, papeCache):
         self.blocs = papeCache.split("}\n\n")
     def searchForHashes(self):
