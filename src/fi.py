@@ -8,6 +8,7 @@ from utilHash import getMD5
 from utilFile import moveToFolder
 from utilFile import renameAndMove
 from coms import ASKforShortTitle
+from coms import ASKforProject
 from coms import NOTIFYforHashHandling
 
 class fileInfo:
@@ -24,12 +25,16 @@ class fileInfo:
         self.author = ""
         self.year = ""
         self.title = ""
+        self.project = "[[MISC]]"
     def SetTitleAuthorYear(self, title,author,year):
         self.author = author
         self.year = year
         self.title = title
     def ASKforShortTitle(self):
         self.shortTitle = ASKforShortTitle(self)
+        self.ASKforProject()
+    def ASKforProject(self):
+        self.project = ASKforProject()
     def NOTIFYforHashHandling(self):
         NOTIFYforHashHandling(self.filename, self.hash)
     def SetBloc(self, bloc):
@@ -56,7 +61,10 @@ class fileInfo:
     def makeHashFile(self,hashLib):
         makeFile(makeFullPath(hashLib,self.hash),"")
     def makeMdFile(self,vault):
-        makeFile(makeFullPath(vault,self.shortTitle+".md"),self.bloc+"\n"+"![[docLib/"+self.shortTitle+self.ext+"]]")
+        fullbloc = self.bloc
+        fullbloc += "\n"+"FILE: ![[docLib/"+self.shortTitle+self.ext+"]]"
+        fullbloc += "\n PROJECT: " + self.project
+        makeFile(makeFullPath(vault,self.shortTitle+".md"),fullbloc)
     def Archive(self,vault,doclib,hashlib):
         self.makeMdFile(vault)
         self.makeHashFile(hashlib)

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+cProject = "MISC"
 
 def fullBorder():
     print("=========================")
@@ -17,6 +17,18 @@ def ASKforShortTitle(fiObj):
     st = input("ShortTitle: ")
     print("")
     return st
+
+def ASKforProject():
+    proj = input("Please input project Callsign, hit Enter if last: ")
+    print("")
+    global cProject
+    if proj == "":
+        return "[[" + cProject + "]]"
+    else:
+        cProject = proj
+        return "[[" + proj + "]]"
+    
+    
 
 def NOTIFYforHashHandling(filename, Hash):
     fullBorder()
