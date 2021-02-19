@@ -90,6 +90,11 @@ def writeOverFile(path, txt):
             os.exit(1)
         else:
             writeOverFile(path,txt)
+    except UnicodeEncodeError:
+        print("Received UnicodeEncodeError!")
+        print("path: " + path)
+        print(txt)
+        os.exit(1)
         
 """
 print(getFileName("C:/Users/xyz/Documents/Code/Eliex/src/Eliex/testfolder/hashLib/9dd4e461268c8034f5c8564e155c67a6"))
