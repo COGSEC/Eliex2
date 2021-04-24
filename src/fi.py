@@ -60,15 +60,17 @@ class fileInfo:
         return rs
     def makeHashFile(self,hashLib):
         makeFile(makeFullPath(hashLib,self.hash),"")
-                                                                ######Experimental
+                                                                                ######Experimental
     def makeGDocFile(self,gDocLib):
         makeFile(makeFullPath(gDocLib,self.shortTitle+".txt"),"")
     def makeMdFile(self,vault):
         fullbloc = self.bloc
         fullbloc += "\n"+"FILE: ![[docLib/"+self.shortTitle+self.ext+"]]"
+        fullbloc += "\n"+"NOTEFILE: ![[gDocLib/"+self.shortTitle+".gdoc]]"
+                                                                                ######Experimental
         fullbloc += "\n PROJECT: " + self.project
         makeFile(makeFullPath(vault,self.shortTitle+".md"),fullbloc)
-                                                                ######Experimental
+                                                                                ######Experimental
     def Archive(self,vault,doclib,hashlib,gDocLib):
         self.makeMdFile(vault)
         self.makeHashFile(hashlib)
