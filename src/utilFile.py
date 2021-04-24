@@ -23,7 +23,7 @@ def editFilePath(filepath, newFilepath):
 
 # makeFile takes a string and creates a file given a filepath
 def makeFile(filepath, string):
-    with open(filepath,"a") as file:
+    with open(filepath,"a", encoding="utf-8") as file:
         file.write(string)
 
 # checkForFile checks if a file exists or not, returns a bool
@@ -81,7 +81,7 @@ def getPathsFromFolder(folder, **kwargs):
 
 def writeOverFile(path, txt):
     try:   
-        with open(path, 'w') as f:
+        with open(path, 'w', encoding="utf-8") as f:
             f.write(txt)
     except PermissionError:
         print("Received PermissionError!")

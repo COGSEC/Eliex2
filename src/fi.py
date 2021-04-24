@@ -56,7 +56,7 @@ class fileInfo:
     def writeReportString(self):
         rs = ""
         rs += self.hash +", "
-        rs += self.filename
+        rs += self.filename.replace(",","__")
         return rs
     def makeHashFile(self,hashLib):
         makeFile(makeFullPath(hashLib,self.hash),"")
@@ -69,5 +69,4 @@ class fileInfo:
         self.makeMdFile(vault)
         self.makeHashFile(hashlib)
         self.RenameAndMove(doclib)
-        
         

@@ -43,7 +43,7 @@ class Librarian:
             coms.NOTIFYWritingreport()
             bloctext = ""
             for fiObj in self.fiList:
-                bloctext += fiObj.writeReportString() +"\n"
+                bloctext += fiObj.writeReportString() + "\n"
             utilFile.writeOverFile(self.reportLoc, bloctext)
     def setBlocs(self, papeCache):
         self.blocs = papeCache.split("}\n\n")
