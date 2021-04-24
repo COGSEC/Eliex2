@@ -26,7 +26,7 @@ def ASKforProject():
         return "[[" + cProject + "]]"
     else:
         cProject = proj
-        return "[[" + proj + "]]"
+        return "[[" + "_p_ " +proj + "]]"
     
     
 
