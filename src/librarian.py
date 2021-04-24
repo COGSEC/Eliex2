@@ -11,6 +11,8 @@ class Librarian:
         self.docLib = configMngr.GetPath('DocLib')
         self.hashLib =  configMngr.GetPath('HashLib')
         self.reportLoc =  configMngr.GetPath('Report')
+                                                                                ######Experimental
+        self.gDocLib = configMngr.GetPath('gDocLib')
         self.blocs = []
         self.fiList = []
         self.parser = blocParser.blocParser()
@@ -34,7 +36,8 @@ class Librarian:
             ready[i] = self.parser.ParseBloc(ready[i])
         self.askForNames(ready)
         for fiObj in ready:
-            fiObj.Archive(self.vault,self.docLib,self.hashLib)
+                                                                                ##### Experimental
+            fiObj.Archive(self.vault,self.docLib,self.hashLib,self.gDocLib)
     def askForNames(self,ready):
         for fiObj in ready:
             fiObj.ASKforShortTitle()
