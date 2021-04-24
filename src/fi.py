@@ -62,7 +62,7 @@ class fileInfo:
         makeFile(makeFullPath(hashLib,self.hash),"")
                                                                 ######Experimental
     def makeGDocFile(self,gDocLib):
-        makeFile(makeFullPath(gDocLib,self.shortTitle+".gdoc"),"")
+        makeFile(makeFullPath(gDocLib,self.shortTitle+".txt"),"")
     def makeMdFile(self,vault):
         fullbloc = self.bloc
         fullbloc += "\n"+"FILE: ![[docLib/"+self.shortTitle+self.ext+"]]"
